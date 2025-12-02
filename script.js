@@ -1,18 +1,13 @@
-function generateNumber() {
-    const min = Math.ceil(document.querySelector(".input-min").value);
-    const max = Math.floor(document.querySelector(".input-max").value);
+function sortear() {
+    const min = Number(document.getElementById("min").value);
+    const max = Number(document.getElementById("max").value);
 
-    if (min === "" || max === "") {
-        document.querySelector(".result").innerHTML = "Preencha os dois valores!";
+    if (min >= max || min === "" || max === "") {
+        document.getElementById("resultado").innerText = "Valores inválidos!";
         return;
     }
 
-    if (min > max) {
-        document.querySelector(".result").innerHTML = "O valor mínimo precisa ser menor que o máximo!";
-        return;
-    }
+    const numero = Math.floor(Math.random() * (max - min + 1)) + min;
 
-    const result = Math.floor(Math.random() * (max - min + 1)) + min;
-
-    document.querySelector(".result").innerHTML = `Número sorteado: <strong>${result}</strong>`;
+    document.getElementById("resultado").innerText = numero;
 }
